@@ -1,6 +1,6 @@
 const CONFIG = {
   GEOSERVER_URL: 'http://localhost:8080/geoserver/wms',
-  CESIUM_TOKEN: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlOTk1NjFiNi0yYTIxLTQ3MjMtYjhmNS02YzI0YjljODMyYTkiLCJpZCI6MzAxMTgyLCJpYXQiOjE3NDY4NTE1MzF9.SkANfE61s0IRlgIL7Fxh7bucq7Q4iHEvkZ6ouLwWg1k',
+  CESIUM_TOKEN: 'your-cesium-token-here',
   LAYERS: {
     ELEVACION: 'SGG:SLV_msk_alt',
     HUMEDAD: 'SGG:humedad',
