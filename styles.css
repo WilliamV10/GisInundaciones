@@ -1,0 +1,60 @@
+/* Estilo para el contenedor de controles */
+#controls {
+  background-color: #f9f9f9; /* Fondo claro */
+  border: 1px solid #ccc; /* Borde gris */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 15px; /* Espaciado interno */
+  width: 250px; /* Ancho fijo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+  font-family: Arial, sans-serif; /* Fuente legible */
+  font-size: 14px; /* Tamaño de fuente */
+  color: #333; /* Color de texto */
+  position: absolute; /* Posición fija */
+  top: 20px; /* Separación desde arriba */
+  left: 20px; /* Separación desde la izquierda */
+  z-index: 1000; /* Asegurar que esté encima */
+}
+
+/* Estilo para los títulos */
+#controls strong {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Estilo para los checkboxes */
+#controls label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+#controls input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2); /* Hacer los checkboxes más grandes */
+}
+
+/* Hover para los labels */
+#controls label:hover {
+  background-color: #eaeaea;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+.leyenda {
+  margin-left: 20px; /* Alinear con el checkbox */
+  font-size: 12px;
+  color: #555;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 5px;
+}
+.leyenda img {
+  max-width: 100%; /* Ajustar el ancho de la imagen al contenedor */
+  height: auto; /* Mantener la proporción de la imagen */
+  display: block;
+  margin-top: 5px;
+}

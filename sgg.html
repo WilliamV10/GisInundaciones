@@ -1,0 +1,63 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>GIS El Salvador - CesiumJS</title>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.113/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.113/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="cesiumContainer"></div>
+
+    <div id="controls" class="control-panel">
+    <strong>Capas:</strong><br>
+    <label>
+      <input type="checkbox" id="chkElevacion" checked> Elevación
+    </label>
+    <div id="leyendaElevacion" class="leyenda" style="display: none;"></div>
+  
+    <label>
+      <input type="checkbox" id="chkHumedad"> Humedad
+    </label>
+    <div id="leyendaHumedad" class="leyenda" style="display: none;"></div>
+  
+    <label>
+      <input type="checkbox" id="chkMunicipios" checked> Municipios
+    </label>
+    <div id="leyendaMunicipios" class="leyenda" style="display: none;"></div>
+  
+    <label>
+      <input type="checkbox" id="chkRios" checked> Ríos
+    </label>
+    <div id="leyendaRios" class="leyenda" style="display: none;"></div>
+
+    <label>
+      <input type="checkbox" id="chkCarreteras" checked> Carreteras
+    </label>
+    <div id="leyendaCarreteras" class="leyenda" style="display: none;"></div>
+  
+    <label>
+      <input type="checkbox" id="chkInundaciones"> Registro Inundaciones
+    </label>
+    <div id="leyendaInundaciones" class="leyenda" style="display: none;"></div>
+  
+    <label>
+      <input type="checkbox" id="chkDepartamentos" checked> Departamentos
+    </label>
+    <div id="leyendaDepartamentos" class="leyenda" style="display: none;"></div>
+  
+    <label>
+      <input type="checkbox" id="chkClasificacionInundaciones" checked> Clasificación vulnerabilidad
+    </label>
+    <div id="leyendaClasificacionInundaciones" class="leyenda" style="display: none;"></div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="layers.js"></script>
+  <script src="entities.js"></script>
+  <script src="interface.js"></script>
+</body>
+</html>
