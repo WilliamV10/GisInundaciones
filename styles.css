@@ -1,49 +1,119 @@
-/* Estilo para el contenedor de controles */
-#controls {
-  background-color: #f9f9f9; /* Fondo claro */
-  border: 1px solid #ccc; /* Borde gris */
-  border-radius: 8px; /* Bordes redondeados */
-  padding: 15px; /* Espaciado interno */
-  width: 250px; /* Ancho fijo */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
-  font-family: Arial, sans-serif; /* Fuente legible */
-  font-size: 14px; /* Tamaño de fuente */
-  color: #333; /* Color de texto */
-  position: absolute; /* Posición fija */
-  top: 20px; /* Separación desde arriba */
-  left: 20px; /* Separación desde la izquierda */
-  z-index: 1000; /* Asegurar que esté encima */
+/* Reset general */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
 }
 
-/* Estilo para los títulos */
-#controls strong {
-  font-size: 16px;
-  color: #444;
-  margin-bottom: 10px;
+/* Ocupa toda la pantalla */
+#cesiumContainer {
+  width: 100%;
+  height: 100%;
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* Añade estos estilos al final del archivo */
+
+/* Mejorar el panel de control */
+.control-panel {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 9999;
+  width: 280px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 0;
+  overflow: hidden; /* Evita mostrar el contenido fuera del panel */
 }
 
-/* Estilo para los checkboxes */
+/* Encabezado del panel siempre visible y estilizado */
+.controls-header {
+  background-color: #3a86ff;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0; /* Eliminar margen inferior */
+  position: sticky; /* Mantenerlo fijo mientras se hace scroll */
+  top: 0;
+  z-index: 10;
+}
+
+/* Contenido con scroll independiente */
+#controlsContent {
+  padding: 10px;
+  max-height: 60vh; /* Altura máxima para el contenido */
+  overflow-y: auto; /* Solo scroll vertical cuando sea necesario */
+  background-color: rgba(255, 255, 255, 0.9); /* Mismo color que el panel */
+}
+
+/* Cuando el panel está cerrado, el contenido no debe verse */
+#controlsContent.hidden {
+  display: none;
+}
+
+.controls-header:hover {
+  background-color: #2a75ee;
+}
+
+.controls-header strong {
+  margin: 0;
+  display: inline;
+  color: white !important;
+}
+
+/* Estilos para los iconos de Font Awesome */
+.toggle-legend {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
+  margin-left: auto;
+  color: #3a86ff; /* Color para los iconos */
+}
+
+.toggle-legend i {
+  font-size: 18px; /* Tamaño de los iconos */
+}
+
+.toggle-legend:hover {
+  color: #2a75ee; /* Color al pasar el ratón */
+}
+
+/* Estilo para el icono de toggle del panel */
+#toggleIcon i {
+  font-size: 14px;
+}
+
+/* Actualizar estilos de etiquetas con los botones */
 #controls label {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 8px;
   cursor: pointer;
+  padding: 4px 8px;
 }
 
 #controls input[type="checkbox"] {
   margin-right: 8px;
-  transform: scale(1.2); /* Hacer los checkboxes más grandes */
 }
-
-/* Hover para los labels */
-#controls label:hover {
-  background-color: #eaeaea;
-  border-radius: 4px;
-  padding: 2px 4px;
-}
+/* Mejorar la visualización de las leyendas */
 .leyenda {
-  margin-left: 20px; /* Alinear con el checkbox */
+  max-height: 200px; /* Altura máxima para las leyendas */
+  overflow-y: auto; /* Scroll solo para leyendas largas */
+  margin-left: 20px;
   font-size: 12px;
   color: #555;
   background-color: #f0f0f0;
@@ -51,6 +121,7 @@
   border-radius: 4px;
   padding: 5px;
   margin-top: 5px;
+  margin-bottom: 5px;
 }
 .leyenda img {
   max-width: 100%; /* Ajustar el ancho de la imagen al contenedor */

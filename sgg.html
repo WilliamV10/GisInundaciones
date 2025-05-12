@@ -1,58 +1,81 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>GIS El Salvador - CesiumJS</title>
+  <title>GIS Zonas Propensas a Inundaciones en El Salvador </title>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.113/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.113/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
   <div id="cesiumContainer"></div>
 
-    <div id="controls" class="control-panel">
-    <strong>Capas:</strong><br>
-    <label>
-      <input type="checkbox" id="chkElevacion" checked> Elevación
-    </label>
-    <div id="leyendaElevacion" class="leyenda" style="display: none;"></div>
-  
-    <label>
-      <input type="checkbox" id="chkHumedad"> Humedad
-    </label>
-    <div id="leyendaHumedad" class="leyenda" style="display: none;"></div>
-  
-    <label>
-      <input type="checkbox" id="chkMunicipios" checked> Municipios
-    </label>
-    <div id="leyendaMunicipios" class="leyenda" style="display: none;"></div>
-  
-    <label>
-      <input type="checkbox" id="chkRios" checked> Ríos
-    </label>
-    <div id="leyendaRios" class="leyenda" style="display: none;"></div>
-
-    <label>
-      <input type="checkbox" id="chkCarreteras" checked> Carreteras
-    </label>
-    <div id="leyendaCarreteras" class="leyenda" style="display: none;"></div>
-  
-    <label>
-      <input type="checkbox" id="chkInundaciones"> Registro Inundaciones
-    </label>
-    <div id="leyendaInundaciones" class="leyenda" style="display: none;"></div>
-  
-    <label>
-      <input type="checkbox" id="chkDepartamentos" checked> Departamentos
-    </label>
-    <div id="leyendaDepartamentos" class="leyenda" style="display: none;"></div>
-  
-    <label>
-      <input type="checkbox" id="chkClasificacionInundaciones" checked> Clasificación vulnerabilidad
-    </label>
-    <div id="leyendaClasificacionInundaciones" class="leyenda" style="display: none;"></div>
+  <div id="controls" class="control-panel">
+    <div id="controlsHeader" class="controls-header">
+      <strong>Capas</strong>
+      <span id="toggleIcon"></span>
+    </div>
+    
+    <div id="controlsContent" style="display: none;">
+      <!-- 1. Registro Inundaciones -->
+      <label>
+        <input type="checkbox" id="chkInundaciones"> Registro Inundaciones
+        <button class="toggle-legend" data-target="leyendaInundaciones"><i class="fa-solid fa-circle-info"></i></button>
+      </label>
+      <div id="leyendaInundaciones" class="leyenda" style="display: none;"></div>
+      
+      <!-- 2. Departamentos -->
+      <label>
+        <input type="checkbox" id="chkDepartamentos" checked> Departamentos
+        <button class="toggle-legend" data-target="leyendaDepartamentos"><i class="fa-solid fa-circle-info"></i></button>
+      </label>
+      <div id="leyendaDepartamentos" class="leyenda" style="display: none;"></div>
+      
+      <!-- 3. Municipios -->
+      <label>
+        <input type="checkbox" id="chkMunicipios" checked> Municipios
+        <button class="toggle-legend" data-target="leyendaMunicipios"><i class="fa-solid fa-circle-info"></i></button>
+      </label>
+      <div id="leyendaMunicipios" class="leyenda" style="display: none;"></div>
+      
+      <!-- 4. Ríos -->
+      <label>
+        <input type="checkbox" id="chkRios" checked> Ríos
+        <button class="toggle-legend" data-target="leyendaRios"><i class="fa-solid fa-circle-info"></i></button>
+      </label>
+      <div id="leyendaRios" class="leyenda" style="display: none;"></div>
+    
+      <!-- 5. Carreteras -->
+      <label>
+        <input type="checkbox" id="chkCarreteras" checked> Carreteras
+        <button class="toggle-legend" data-target="leyendaCarreteras"><i class="fa-solid fa-circle-info"></i></button>
+      </label>
+      <div id="leyendaCarreteras" class="leyenda" style="display: none;"></div>
+      
+      <!-- 6. Humedad del Suelo -->
+      <label>
+        <input type="checkbox" id="chkHumedad"> Humedad del Suelo
+        <button class="toggle-legend" data-target="leyendaHumedad"><i class="fa-solid fa-circle-info"></i></button>
+      </label>
+      <div id="leyendaHumedad" class="leyenda" style="display: none;"></div>
+      
+      <!-- 7. Elevación -->
+      <label>
+        <input type="checkbox" id="chkElevacion" checked> Elevación
+        <button class="toggle-legend" data-target="leyendaElevacion"><i class="fa-solid fa-circle-info"></i></button>
+      </label>
+      <div id="leyendaElevacion" class="leyenda" style="display: none;"></div>
+      
+      <!-- 8. Clasificación vulnerabilidad -->
+      <label>
+        <input type="checkbox" id="chkClasificacionInundaciones" checked> Clasificación vulnerabilidad
+        <button class="toggle-legend" data-target="leyendaClasificacionInundaciones"><i class="fa-solid fa-circle-info"></i></button>
+      </label>
+      <div id="leyendaClasificacionInundaciones" class="leyenda" style="display: none;"></div>
+    </div>
   </div>
 
   <script src="config.js"></script>
