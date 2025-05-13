@@ -18,7 +18,7 @@ function setupNavigationControls(viewer) {
   // Botón de alejar (Zoom Out)
   document.getElementById('zoomOut').addEventListener('click', function() {
     // 15% de alejamiento por clic
-    zoomByFactor(viewer, 0.95);
+    zoomByFactor(viewer, 1.10);
   });
   
   // Botón de vista inicial
