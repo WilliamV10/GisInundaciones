@@ -13,6 +13,7 @@
 <body>
   <div id="cesiumContainer"></div>
 
+  <!-- Panel de control de capas -->
   <div id="controls" class="control-panel">
     <div id="controlsHeader" class="controls-header">
       <strong>Capas</strong>
@@ -78,9 +79,16 @@
     </div>
   </div>
 
+  <!-- Herramientas de navegación (ahora fuera del panel de capas) -->
+  <div class="navigation-tools">
+    <button id="zoomIn" class="zoom-button" title="Acercar"><i class="fa-solid fa-plus"></i></button>
+    <button id="zoomOut" class="zoom-button" title="Alejar"><i class="fa-solid fa-minus"></i></button>
+    <button id="resetView" class="zoom-button" title="Vista inicial"><i class="fa-solid fa-house"></i></button>
+  </div>
+
   <script src="config.js"></script>
   <script src="layers.js"></script>
-  <script src="entities.js"></script>
   <script src="interface.js"></script>
+  <script src="navigation.js"></script>
 </body>
 </html>

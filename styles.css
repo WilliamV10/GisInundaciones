@@ -129,3 +129,64 @@ html, body {
   display: block;
   margin-top: 5px;
 }
+
+/* Añade estos estilos al final del archivo styles.css */
+
+/* Herramientas de navegación en esquina inferior derecha */
+.navigation-tools {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustes a los botones de zoom para el nuevo contenedor */
+.navigation-tools .zoom-button {
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Elimina estilos anteriores de la clase zoom-controls que ya no necesitamos */
+.zoom-controls {
+  display: none; /* Ocultar la versión anterior */
+}
+
+/* Mantener los estilos actuales para los botones */
+.zoom-button {
+  background-color: #3a86ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.zoom-button:hover {
+  background-color: #2a75ee;
+}
+
+/* Añadir efecto de hover más distintivo */
+.navigation-tools .zoom-button:hover {
+  transform: scale(1.1);
+}
+
+/* Añadir efecto de presionado */
+.navigation-tools .zoom-button:active {
+  transform: scale(0.95);
+  background-color: #1a65de;
+}
