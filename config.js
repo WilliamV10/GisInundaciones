@@ -2,14 +2,14 @@ const CONFIG = {
   GEOSERVER_URL: 'http://168.138.75.16:8080/geoserver/wms',
   CESIUM_TOKEN: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlOTk1NjFiNi0yYTIxLTQ3MjMtYjhmNS02YzI0YjljODMyYTkiLCJpZCI6MzAxMTgyLCJpYXQiOjE3NDY4NTE1MzF9.SkANfE61s0IRlgIL7Fxh7bucq7Q4iHEvkZ6ouLwWg1k',
   LAYERS: {
-    ELEVACION: 'SGG:SLV_msk_alt',
-    HUMEDAD: 'SGG:humedad',
-    MUNICIPIOS: 'SGG:vista_municipios',
-    RIOS: 'SGG:vista_rios',
-    CARRETERAS: 'SGG:vista_carreteras',
-    INUNDACIONES: 'SGG:vista_inundaciones_liviana',
-    DEPARTAMENTOS: 'SGG:vista_departamentos',
-    CLASIFICACION: 'SGG:vista_clasificacion_vulnerabilidad'
+    ELEVACION: 'ProyectoSGG:Elevacion',
+    HUMEDAD: 'ProyectoSGG:Humedad',
+    MUNICIPIOS: 'ProyectoSGG:vista_municipios',
+    RIOS: 'ProyectoSGG:vista_rios',
+    CARRETERAS: 'ProyectoSGG:vista_carreteras',
+    INUNDACIONES: 'ProyectoSGG:vista_inundaciones_liviana',
+    DEPARTAMENTOS: 'ProyectoSGG:vista_departamentos',
+    CLASIFICACION: 'ProyectoSGG:vista_clasificacion_vulnerabilidad'
   }
 };
 
