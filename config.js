@@ -1,15 +1,15 @@
 const CONFIG = {
-  GEOSERVER_URL: 'http://localhost:8080/geoserver/wms',
-  CESIUM_TOKEN: CESIUM_TOKEN,
+  GEOSERVER_URL: 'https://conducting-running-seller-seen.trycloudflare.com/geoserver/wms',
+  CESIUM_TOKEN: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlOTk1NjFiNi0yYTIxLTQ3MjMtYjhmNS02YzI0YjljODMyYTkiLCJpZCI6MzAxMTgyLCJpYXQiOjE3NDY4NTE1MzF9.SkANfE61s0IRlgIL7Fxh7bucq7Q4iHEvkZ6ouLwWg1k',
   LAYERS: {
     ELEVACION: 'SGG:SLV_msk_alt',
     HUMEDAD: 'SGG:humedad',
-    MUNICIPIOS: 'SGG:municipios',
-    RIOS: 'SGG:riosl',
-    CARRETERAS: 'SGG:carreteras',
+    MUNICIPIOS: 'SGG:vista_municipios',
+    RIOS: 'SGG:vista_rios',
+    CARRETERAS: 'SGG:vista_carreteras',
     INUNDACIONES: 'SGG:vista_inundaciones_liviana',
-    DEPARTAMENTOS: 'SGG:departamentos',
-    CLASIFICACION: 'SGG:clasificacion_vulnerabilidad'
+    DEPARTAMENTOS: 'SGG:vista_departamentos',
+    CLASIFICACION: 'SGG:vista_clasificacion_vulnerabilidad'
   }
 };
 
