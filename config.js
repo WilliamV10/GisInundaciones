@@ -1,5 +1,5 @@
 const CONFIG = {
-  GEOSERVER_URL: 'http://168.138.75.16:8080/geoserver/wms',
+  GEOSERVER_URL: 'https://geoserver.vg18011.me/geoserver/wms',
   CESIUM_TOKEN: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlOTk1NjFiNi0yYTIxLTQ3MjMtYjhmNS02YzI0YjljODMyYTkiLCJpZCI6MzAxMTgyLCJpYXQiOjE3NDY4NTE1MzF9.SkANfE61s0IRlgIL7Fxh7bucq7Q4iHEvkZ6ouLwWg1k',
   LAYERS: {
     ELEVACION: 'ProyectoSGG:Elevacion',
