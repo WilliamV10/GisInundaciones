@@ -200,7 +200,9 @@ function setupFeatureInfoHandler(viewer) {
             if (layerName === 'ProyectoSGG:Humedad') return 'Humedad del Suelo';
 
 
-            return nameMapping[baseName] || baseName;
+            return nameMapping[baseName] || baseName.replace(/_/g, ' ')
+              .replace(/^vista /i, '')
+              .replace(/^\w/, c => c.toUpperCase());
           }
 
           // Función para formatear nombres de propiedades
