@@ -2,18 +2,18 @@ function createWMSProvider(layer, additionalParams = {}) {
   return new Cesium.WebMapServiceImageryProvider({
     url: CONFIG.GEOSERVER_URL,
     layers: layer,
-    parameters: { transparent: true, format: 'image/png', tiled:true, ...additionalParams },
+    parameters: { transparent: true, format: 'image/png', tiled: true, ...additionalParams },
     tilingScheme: new Cesium.GeographicTilingScheme()
   });
 }
 
 const layers = {
-  elevacion: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.ELEVACION), ),
-  humedad: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.HUMEDAD), ),
+  elevacion: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.ELEVACION),),
+  humedad: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.HUMEDAD),),
   clasificacion: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.CLASIFICACION,)),
-  municipios: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.MUNICIPIOS), ),
-  rios: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.RIOS), ),
-  departamentos: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.DEPARTAMENTOS), ),
+  municipios: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.MUNICIPIOS),),
+  rios: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.RIOS),),
+  departamentos: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.DEPARTAMENTOS),),
   carreteras: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.CARRETERAS),),
   inundaciones: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.INUNDACIONES, { info_format: 'application/json' }))
 };
@@ -24,7 +24,7 @@ layers.rios.show = false;
 layers.clasificacion.show = false;
 layers.humedad.show = false;
 layers.inundaciones.show = false;
-layers.carreteras.show = false; 
+layers.carreteras.show = false;
 
 // Mantener municipios y departamentos visibles
 layers.municipios.show = true;
@@ -65,35 +65,35 @@ viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpace
 // Función para manejar clics en el mapa y mostrar datos en SweetAlert con navegación entre capas
 function setupFeatureInfoHandler(viewer) {
   const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
-  
+
   handler.setInputAction((click) => {
     // Obtener la posición del clic en coordenadas de pantalla
     const windowPosition = click.position;
-    
+
     // Verificar cuáles capas están visibles
     const visibleLayers = Object.entries(layers)
       .filter(([key, layer]) => layer.show)
       .map(([key]) => CONFIG.LAYERS[key.toUpperCase()]);
-    
+
     if (visibleLayers.length === 0) return;
-    
+
     // Obtener coordenadas geográficas del clic
     const cartesian = viewer.camera.pickEllipsoid(windowPosition, viewer.scene.globe.ellipsoid);
     if (!cartesian) return;
-    
+
     const cartographic = Cesium.Cartographic.fromCartesian(cartesian);
     const longitude = Cesium.Math.toDegrees(cartographic.longitude);
     const latitude = Cesium.Math.toDegrees(cartographic.latitude);
-    
+
     // Crear un pequeño buffer alrededor del punto
-    const bbox = `${longitude-0.001},${latitude-0.001},${longitude+0.001},${latitude+0.001}`;
-    
+    const bbox = `${longitude - 0.001},${latitude - 0.001},${longitude + 0.001},${latitude + 0.001}`;
+
     // Crear URL para GetFeatureInfo
     const url = `${CONFIG.GEOSERVER_URL}?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo` +
-                `&LAYERS=${visibleLayers.join(',')}&QUERY_LAYERS=${visibleLayers.join(',')}` +
-                `&INFO_FORMAT=application/json&SRS=EPSG:4326` +
-                `&BBOX=${bbox}&WIDTH=101&HEIGHT=101&X=50&Y=50&FEATURE_COUNT=10`;
-    
+      `&LAYERS=${visibleLayers.join(',')}&QUERY_LAYERS=${visibleLayers.join(',')}` +
+      `&INFO_FORMAT=application/json&SRS=EPSG:4326` +
+      `&BBOX=${bbox}&WIDTH=101&HEIGHT=101&X=50&Y=50&FEATURE_COUNT=10`;
+
     // Mostrar indicador de carga
     Swal.fire({
       title: 'Cargando...',
@@ -103,19 +103,19 @@ function setupFeatureInfoHandler(viewer) {
         Swal.showLoading();
       }
     });
-    
+
     // Realizar la solicitud a GeoServer
     fetch(url)
       .then(response => response.json())
       .then(data => {
         // Cerrar el indicador de carga
         Swal.close();
-        
+
         // Verificar si hay entidades
         if (data.features && data.features.length > 0) {
           // Agrupar características por capa
           const featuresByLayer = {};
-          
+
           data.features.forEach(feature => {
             const layerName = feature.id.split('.')[0]; // Obtener nombre de capa
             if (!featuresByLayer[layerName]) {
@@ -123,16 +123,16 @@ function setupFeatureInfoHandler(viewer) {
             }
             featuresByLayer[layerName].push(feature);
           });
-          
+
           // Obtener las capas como un array para poder navegar entre ellas
           const layerNames = Object.keys(featuresByLayer);
           let currentLayerIndex = 0;
-          
+
           // Función para generar contenido HTML para la capa actual
           function generateLayerContent(layerIndex) {
             const layerName = layerNames[layerIndex];
             const features = featuresByLayer[layerName];
-            
+
             let content = `
               <div class="layer-card">
                 <div class="layer-header">
@@ -140,47 +140,50 @@ function setupFeatureInfoHandler(viewer) {
                 </div>
                 <div class="layer-content">
             `;
-            
+
             features.forEach((feature, index) => {
               const properties = feature.properties;
-              
+
               content += `<div class="feature-info ${index > 0 ? 'feature-separator' : ''}">`;
-              
+
               if (features.length > 1) {
                 content += `<div class="feature-subtitle">Elemento ${index + 1}</div>`;
               }
-              
+
               content += '<table style="width:100%; border-collapse: collapse;">';
-              
+
               // Mostrar cada propiedad
               Object.entries(properties).forEach(([key, value]) => {
                 // Excluir propiedades técnicas o vacías
                 if (!key.startsWith('_') && value !== null && value !== "") {
+                  // Formatear el valor según la capa y la propiedad
+                  const formattedValue = formatPropertyValue(key, value, layerName);
+
                   content += `<tr>
-                    <td style="padding:4px; border-bottom:1px solid #eee; font-weight:bold;">${formatPropertyName(key)}</td>
-                    <td style="padding:4px; border-bottom:1px solid #eee;">${value}</td>
-                  </tr>`;
+      <td style="padding:4px; border-bottom:1px solid #eee; font-weight:bold;">${formatPropertyName(key)}</td>
+      <td style="padding:4px; border-bottom:1px solid #eee;">${formattedValue}</td>
+    </tr>`;
                 }
               });
-              
+
               content += '</table>';
               content += '</div>';
             });
-            
+
             content += `
                 </div>
               </div>
             `;
-            
+
             return content;
           }
-          
+
           // Función para obtener nombre amigable de la capa
           function getNombreAmigable(layerName) {
             // Quitar el prefijo (por ejemplo, "SGG:")
             const nameParts = layerName.split(':');
             const baseName = nameParts.length > 1 ? nameParts[1] : layerName;
-            
+
             // Mapeo de nombres técnicos a nombres amigables
             const nameMapping = {
               'vista_municipios': 'Municipios',
@@ -192,10 +195,14 @@ function setupFeatureInfoHandler(viewer) {
               'clasificacion_vulnerabilidad': 'Clasificación de Vulnerabilidad',
               'vista_inundaciones_liviana': 'Registro de Inundaciones'
             };
-            
+            // Casos especiales para geoserver ProyectoSGG
+            if (layerName === 'ProyectoSGG:Elevacion') return 'Elevación';
+            if (layerName === 'ProyectoSGG:Humedad') return 'Humedad del Suelo';
+
+
             return nameMapping[baseName] || baseName;
           }
-          
+
           // Función para formatear nombres de propiedades
           function formatPropertyName(propertyName) {
             // Reemplazar guiones bajos por espacios y capitalizar primera letra
@@ -206,9 +213,17 @@ function setupFeatureInfoHandler(viewer) {
               .replace(/nombre/i, 'Nombre')
               .replace(/area/i, 'Área')
               .replace(/tipo/i, 'Tipo')
-              .replace(/fecha/i, 'Fecha');
+              .replace(/fecha/i, 'Fecha')
+              .replace(/GRAY INDEX/i, 'Valor');
           }
-          
+          // Función para formatear valores especiales
+          function formatPropertyValue(key, value, layerName) {
+            // Si estamos en las capas de elevación o humedad y la propiedad es GRAY_INDEX
+            if ((layerName.includes('Elevacion') || layerName.includes('elevacion')) &&
+              (key.toLowerCase() === 'gray_index' || key.toLowerCase() === 'gray index')) {
+              return `${value} msnm`;  // Añadir unidad de metros sobre nivel del mar
+            } return value;
+          }
           // Crear los elementos de navegación
           const navigationHTML = layerNames.length > 1 ? `
             <div class="layer-navigation">
@@ -221,9 +236,9 @@ function setupFeatureInfoHandler(viewer) {
               </button>
             </div>
           ` : '';
-          
+
           // Estilo personalizado para las tarjetas
-                    const customStyle = `
+          const customStyle = `
             <style>
               .layer-card {
                 background-color: #fff;
@@ -300,27 +315,27 @@ function setupFeatureInfoHandler(viewer) {
               }
             </style>
           `;
-          
-                    // Mostrar el cuadro de diálogo con la información
+
+          // Mostrar el cuadro de diálogo con la información
           // Añadir dentro de la función setupFeatureInfoHandler, en la parte del Swal.fire:
 
-// Modificar la sección de Swal.fire para hacerlo responsive
-Swal.fire({
-  title: 'Información de capas',
-  html: customStyle + generateLayerContent(currentLayerIndex) + navigationHTML,
-  showConfirmButton: true,
-  confirmButtonText: 'Cerrar',
-  width: window.innerWidth < 480 ? '90%' : 400, // Responsive
-  padding: '10px',
-  customClass: {
-    title: 'swal-small-title',
-    confirmButton: 'swal-small-button',
-    popup: 'responsive-popup' // Clase nueva
-  },
-  didOpen: () => {
-    // Añadir estilo adicional para responsive
-    const style = document.createElement('style');
-    style.textContent = `
+          // Modificar la sección de Swal.fire para hacerlo responsive
+          Swal.fire({
+            title: 'Información de capas',
+            html: customStyle + generateLayerContent(currentLayerIndex) + navigationHTML,
+            showConfirmButton: true,
+            confirmButtonText: 'Cerrar',
+            width: window.innerWidth < 480 ? '90%' : 400, // Responsive
+            padding: '10px',
+            customClass: {
+              title: 'swal-small-title',
+              confirmButton: 'swal-small-button',
+              popup: 'responsive-popup' // Clase nueva
+            },
+            didOpen: () => {
+              // Añadir estilo adicional para responsive
+              const style = document.createElement('style');
+              style.textContent = `
       .swal-small-title {
         font-size: 16px !important;
         padding-top: 10px !important;
@@ -341,7 +356,7 @@ Swal.fire({
         }
       }
     `;
-    document.head.appendChild(style);              
+              document.head.appendChild(style);
               if (layerNames.length > 1) {
                 // Configurar los botones de navegación
                 document.getElementById('prevLayerBtn').addEventListener('click', () => {
@@ -350,7 +365,7 @@ Swal.fire({
                     updateContent();
                   }
                 });
-                
+
                 document.getElementById('nextLayerBtn').addEventListener('click', () => {
                   if (currentLayerIndex < layerNames.length - 1) {
                     currentLayerIndex++;
@@ -360,12 +375,12 @@ Swal.fire({
               }
             }
           });
-          
+
           // Función para actualizar el contenido cuando se navega entre capas
           function updateContent() {
             document.querySelector('.layer-card').outerHTML = generateLayerContent(currentLayerIndex);
             document.getElementById('layerCounter').textContent = currentLayerIndex + 1;
-            
+
             // Actualizar estado de los botones
             if (document.getElementById('prevLayerBtn')) {
               document.getElementById('prevLayerBtn').disabled = currentLayerIndex === 0;
@@ -374,7 +389,7 @@ Swal.fire({
               document.getElementById('nextLayerBtn').disabled = currentLayerIndex === layerNames.length - 1;
             }
           }
-          
+
         } else {
           // Si no hay entidades, mostrar un mensaje
           Swal.fire({
