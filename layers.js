@@ -183,12 +183,12 @@ function setupFeatureInfoHandler(viewer) {
             
             // Mapeo de nombres técnicos a nombres amigables
             const nameMapping = {
-              'municipios': 'Municipios',
-              'departamentos': 'Departamentos',
-              'riosl': 'Ríos',
-              'carreteras': 'Carreteras',
-              'SLV_msk_alt': 'Elevación',
-              'humedad': 'Humedad del Suelo',
+              'vista_municipios': 'Municipios',
+              'vista_departamentos': 'Departamentos',
+              'vista_riosl': 'Ríos',
+              'vista_carreteras': 'Carreteras',
+              'Elevacion': 'Elevación',
+              'Humedad': 'Humedad del Suelo',
               'clasificacion_vulnerabilidad': 'Clasificación de Vulnerabilidad',
               'vista_inundaciones_liviana': 'Registro de Inundaciones'
             };
@@ -302,32 +302,46 @@ function setupFeatureInfoHandler(viewer) {
           `;
           
                     // Mostrar el cuadro de diálogo con la información
-          Swal.fire({
-            title: 'Información de capas',
-            html: customStyle + generateLayerContent(currentLayerIndex) + navigationHTML,
-            showConfirmButton: true,
-            confirmButtonText: 'Cerrar',
-            width: 400, // Reducido de 600
-            padding: '10px', // Añadido para reducir el padding interior
-            customClass: {
-              title: 'swal-small-title', // Añadido para poder afectar al título
-              confirmButton: 'swal-small-button' // Añadido para el botón
-            },
-            didOpen: () => {
-              // Añadir estilo adicional para reducir tamaño del título y botón
-              const style = document.createElement('style');
-              style.textContent = `
-                .swal-small-title {
-                  font-size: 16px !important;
-                  padding-top: 10px !important;
-                }
-                .swal-small-button {
-                  font-size: 12px !important;
-                  padding: 5px 15px !important;
-                }
-              `;
-              document.head.appendChild(style);
-              
+          // Añadir dentro de la función setupFeatureInfoHandler, en la parte del Swal.fire:
+
+// Modificar la sección de Swal.fire para hacerlo responsive
+Swal.fire({
+  title: 'Información de capas',
+  html: customStyle + generateLayerContent(currentLayerIndex) + navigationHTML,
+  showConfirmButton: true,
+  confirmButtonText: 'Cerrar',
+  width: window.innerWidth < 480 ? '90%' : 400, // Responsive
+  padding: '10px',
+  customClass: {
+    title: 'swal-small-title',
+    confirmButton: 'swal-small-button',
+    popup: 'responsive-popup' // Clase nueva
+  },
+  didOpen: () => {
+    // Añadir estilo adicional para responsive
+    const style = document.createElement('style');
+    style.textContent = `
+      .swal-small-title {
+        font-size: 16px !important;
+        padding-top: 10px !important;
+      }
+      .swal-small-button {
+        font-size: 12px !important;
+        padding: 5px 15px !important;
+      }
+      .responsive-popup {
+        font-size: ${window.innerWidth < 480 ? '12px' : '14px'} !important;
+      }
+      @media (max-width: 480px) {
+        .layer-card {
+          max-height: 50vh;
+        }
+        .nav-btn {
+          padding: 8px !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);              
               if (layerNames.length > 1) {
                 // Configurar los botones de navegación
                 document.getElementById('prevLayerBtn').addEventListener('click', () => {
