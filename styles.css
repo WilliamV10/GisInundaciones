@@ -342,3 +342,131 @@ html, body {
   transform: scale(0.95);
   background-color: #1a65de;
 }
+/* Estilos para el modal de bienvenida - versión optimizada */
+/* Ajustes generales */
+.swal2-popup.bienvenida-popup {
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Título */
+.swal2-popup.bienvenida-popup .swal2-title.bienvenida-titulo {
+  color: #3a86ff;
+  font-size: 22px;
+  font-weight: bold;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+/* Contenedor HTML */
+.swal2-popup.bienvenida-popup .swal2-html-container.bienvenida-html-container {
+  padding: 0;
+  max-height: 60vh;
+  overflow-y: auto;
+  margin: 0;
+}
+
+/* Contenido personalizado */
+.bienvenida-contenido {
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.bienvenida-subtitulo {
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  color: #3a86ff;
+}
+
+.bienvenida-lista {
+  margin-left: 20px;
+  margin-bottom: 15px;
+  padding-left: 0;
+}
+
+.bienvenida-lista li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.bienvenida-instrucciones {
+  background-color: #f0f7ff;
+  border-left: 4px solid #3a86ff;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.bienvenida-instrucciones i {
+  color: #3a86ff;
+  margin: 0 3px;
+}
+
+.bienvenida-iniciar {
+  margin-top: 15px;
+  font-style: italic;
+  color: #3a86ff;
+  text-align: center;
+}
+
+/* Botón de confirmación */
+.swal2-popup.bienvenida-popup .swal2-confirm.bienvenida-boton {
+  background-color: #3a86ff;
+  color: white;
+  border-radius: 30px;
+  font-weight: bold;
+  padding: 12px 30px;
+  font-size: 16px;
+  min-width: 140px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+}
+
+.swal2-popup.bienvenida-popup .swal2-confirm.bienvenida-boton:hover {
+  background-color: #2a75ee;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 480px) {
+  .swal2-popup.bienvenida-popup {
+    padding: 15px;
+    width: 95%;
+  }
+  
+  .swal2-popup.bienvenida-popup .swal2-title.bienvenida-titulo {
+    font-size: 20px;
+  }
+  
+  .bienvenida-contenido {
+    font-size: 14px;
+  }
+  
+  .swal2-popup.bienvenida-popup .swal2-confirm.bienvenida-boton {
+    padding: 12px 20px;
+    width: 100%;
+    margin: 10px auto 0;
+  }
+}
+
+/* Para dispositivos muy pequeños */
+@media (max-width: 360px) {
+  .swal2-popup.bienvenida-popup .swal2-title.bienvenida-titulo {
+    font-size: 18px;
+  }
+  
+  .bienvenida-contenido {
+    font-size: 13px;
+  }
+  
+  .bienvenida-lista li {
+    margin-bottom: 6px;
+  }
+}

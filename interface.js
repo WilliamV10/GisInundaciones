@@ -72,9 +72,61 @@ function setupControlsPanel() {
     }
   });
 }
-
+// Función para mostrar el mensaje de bienvenida
+function mostrarMensajeBienvenida() {
+  // Verificar si es la primera visita
+  if (!localStorage.getItem('gisInundacionesBienvenidaMostrada')) {
+    // Usar SweetAlert2 con configuración simplificada
+    Swal.fire({
+      title: '¡Bienvenido al Sistema de Información Geográfica!',
+      html: `
+        <div class="bienvenida-contenido">
+          <p>Este SIG le permite explorar las zonas vulnerables a inundaciones en El Salvador.</p>
+          
+          <p class="bienvenida-subtitulo">Con esta herramienta usted puede:</p>
+          <ul class="bienvenida-lista">
+            <li>Visualizar diferentes capas geográficas como departamentos, municipios, ríos y carreteras.</li>
+            <li>Consultar la elevación y humedad del suelo de cualquier punto.</li>
+            <li>Examinar las áreas con mayor vulnerabilidad a inundaciones.</li>
+            <li>Obtener información detallada haciendo clic en cualquier punto del mapa.</li>
+            <li>Activar y desactivar capas desde el panel de control.</li>
+          </ul>
+          
+          <div class="bienvenida-instrucciones">
+            <p>Utilice los botones de navegación <i class="fa-solid fa-plus"></i> <i class="fa-solid fa-minus"></i> <i class="fa-solid fa-house"></i> en la esquina inferior derecha para navegar por el mapa.</p>
+          </div>
+          
+          <p class="bienvenida-iniciar">Para comenzar a explorar, cierre este mensaje y haga clic en cualquier punto del mapa.</p>
+        </div>
+      `,
+      confirmButtonText: 'Comenzar',
+      customClass: {
+        container: 'bienvenida-container',
+        popup: 'bienvenida-popup',
+        title: 'bienvenida-titulo',
+        htmlContainer: 'bienvenida-html-container',
+        confirmButton: 'bienvenida-boton',
+        actions: 'bienvenida-actions'
+      },
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      buttonsStyling: false, // Importante: desactivar estilos de botones por defecto
+    }).then((result) => {
+      // Guardar en localStorage que ya se mostró la bienvenida
+      // Solo cuando se hace clic en el botón (no si se cierra de otra manera)
+      if (result.isConfirmed) {
+        localStorage.setItem('gisInundacionesBienvenidaMostrada', 'true');
+        console.log('Modal cerrado correctamente y confirmación registrada.');
+      }
+    });
+  }
+}
 // Inicializar las funciones
 document.addEventListener('DOMContentLoaded', () => {
+  // Pequeño retraso para asegurar que todo cargue correctamente
+  setTimeout(() => {
+    mostrarMensajeBienvenida();
+  }, 1000);
   // Cargar leyendas
   setupLegendToggleWithImage('chkElevacion', 'leyendaElevacion', CONFIG.LAYERS.ELEVACION);
   setupLegendToggleWithImage('chkHumedad', 'leyendaHumedad', CONFIG.LAYERS.HUMEDAD);
