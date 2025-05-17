@@ -9,7 +9,7 @@ const CONFIG = {
     CARRETERAS: 'ProyectoSGG:vista_carreteras',
     INUNDACIONES: 'ProyectoSGG:vista_inundaciones_liviana',
     DEPARTAMENTOS: 'ProyectoSGG:vista_departamentos',
-    CLASIFICACION: 'ProyectoSGG:vista_clasificacion_vulnerabilidad'
+    CLASIFICACION: 'ProyectoSGG:clasificacion_vulnerabilidad'
   }
   
 };
