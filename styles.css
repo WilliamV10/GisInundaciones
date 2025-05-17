@@ -347,7 +347,7 @@ html, body {
 .swal2-popup.bienvenida-popup {
   border-radius: 12px;
   padding: 20px;
-  max-width: 500px;
+  max-width: 500px;   
   width: 90%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
