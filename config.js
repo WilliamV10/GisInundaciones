@@ -21,7 +21,7 @@ const viewer = new Cesium.Viewer('cesiumContainer', {
 });
 
 viewer.camera.setView({
-  destination: Cesium.Cartesian3.fromDegrees(-88.9, 13.5, 1000000),
+  destination: Cesium.Cartesian3.fromDegrees(-88.9, 13.7, 400000),
   orientation: {
     heading: Cesium.Math.toRadians(0),
     pitch: Cesium.Math.toRadians(-90),
