@@ -131,7 +131,7 @@ function getNombreAmigable(layerName) {
     'vista_carreteras': 'Carreteras',
     'Elevacion': 'Elevación',
     'Humedad': 'Humedad del Suelo',
-    'vista_clasificacion_vulnerabilidad': 'Clasificación de Vulnerabilidad',
+    'vulnerabilidad': 'Clasificación de Vulnerabilidad',
     'vista_inundaciones_liviana': 'Registro de Inundaciones',
   };
   
@@ -154,7 +154,8 @@ function formatPropertyName(propertyName) {
     .replace(/_/g, ' ')
     .replace(/^\w/, c => c.toUpperCase())
     .replace(/id/i, 'ID')
-    .replace(/gray index/i, 'Valor');
+    .replace(/gray index/i, 'Valor')
+    .replace(/value/i, 'Tipo de Vulnerabilidad');
 }
 
 /**
@@ -168,6 +169,22 @@ function formatPropertyValue(key, value, layerName) {
   const keyLower = key.toLowerCase();
   const isGrayIndex = keyLower === 'gray_index' || keyLower.includes('gray');
   
+  // Para clasificación de vulnerabilidad
+  if (layerName === 'vulnerabilidad' || 
+      layerName.toLowerCase().includes('vulnerabilidad') || 
+      layerName.toLowerCase().includes('clasificacion')) {
+    
+    // Formatear 'Value' para vulnerabilidad
+    if (keyLower === 'value') {
+      const numValue = parseInt(value);
+      switch (numValue) {
+        case 1: return 'Alta vulnerabilidad';
+        case 2: return 'Media vulnerabilidad';
+        case 3: return 'Baja vulnerabilidad';
+        default: return value;
+      }
+    }
+  }
   // Agregar unidades según el tipo de capa
   if (isGrayIndex) {
     // Para elevación
@@ -735,14 +752,18 @@ function generateFeatureHTML(feature, index, totalFeatures) {
   // Mostrar cada propiedad
   Object.entries(properties).forEach(([key, value]) => {
     // Excluir propiedades técnicas o vacías
-    if (!key.startsWith('_') && value !== null && value !== "") {
+    if (!key.startsWith('_') && value !== null && value !== "" && 
+        !(key.toLowerCase() === 'cat' && 
+          (layerName === 'vulnerabilidad' || layerName.toLowerCase().includes('vulnerabilidad') || 
+           layerName.toLowerCase().includes('clasificacion')))
+       ) {
       const formattedValue = formatPropertyValue(key, value, layerName);
       html += `<tr>
         <td style="padding:4px; border-bottom:1px solid #eee; font-weight:bold;">${formatPropertyName(key)}</td>
         <td style="padding:4px; border-bottom:1px solid #eee;">${formattedValue}</td>
       </tr>`;
     }
-  });
+  });;
 
   html += '</table></div>';
   
