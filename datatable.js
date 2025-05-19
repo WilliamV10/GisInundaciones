@@ -3,7 +3,7 @@ let selectedEntityId = null;
 
 // Función para obtener los datos WFS de inundaciones
 function fetchInundacionesData() {
-  const wfsUrl = 'https://vg18011.me/geoserver/wfs';
+  const wfsUrl = 'https://geoserver.vg18011.me/geoserver/wfs';
   const params = new URLSearchParams({
     service: 'WFS',
     version: '1.0.0',
