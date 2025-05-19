@@ -133,6 +133,7 @@ function getNombreAmigable(layerName) {
     'Humedad': 'Humedad del Suelo',
     'vulnerabilidad': 'Clasificación de Vulnerabilidad',
     'vista_inundaciones_liviana': 'Registro de Inundaciones',
+    'vista_inundaciones_con_ubicacion':'Registro de Inundaciones',
   };
   
   // Debug

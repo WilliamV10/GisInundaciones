@@ -7,7 +7,7 @@ const CONFIG = {
     MUNICIPIOS: 'ProyectoSGG:vista_municipios',
     RIOS: 'ProyectoSGG:vista_rios',
     CARRETERAS: 'ProyectoSGG:vista_carreteras',
-    INUNDACIONES: 'ProyectoSGG:vista_inundaciones_liviana',
+    INUNDACIONES: 'ProyectoSGG:vista_inundaciones_con_ubicacion',
     DEPARTAMENTOS: 'ProyectoSGG:vista_departamentos',
     CLASIFICACION: 'ProyectoSGG:vulnerabilidad'
   }

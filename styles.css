@@ -470,3 +470,155 @@ html, body {
     margin-bottom: 6px;
   }
 }
+/* Estilos para el botón de tabla de datos */
+.data-table-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
+  color: #ff7f50;
+}
+/* 🎯 Estilos exclusivos y compactos para el modal de tabla de inundaciones */
+.swal2-popup[data-custom="tabla-inundaciones"] {
+  max-width: 640px !important;
+  width: 85vw !important;
+  font-size: 12px;
+  padding: 15px 20px !important;
+}
+
+/* Filtro */
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table-filter input {
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+
+/* Contenedor tabla */
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table-container {
+  max-height: 45vh;
+  overflow-y: auto;
+  margin-top: 8px;
+  border: 1px solid #e1e1e1;
+  border-radius: 3px;
+}
+
+/* Tabla */
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  color: #222;
+  table-layout: fixed;
+}
+
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table th {
+  background-color: #e9f1ff;
+  border-bottom: 2px solid #3a86ff;
+  padding: 6px 8px;
+  text-align: left;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table td {
+  padding: 6px 8px;
+  white-space: normal;
+  word-break: break-word;
+  vertical-align: top;
+  border-bottom: 1px solid #ddd;
+}
+
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table tr:nth-child(even) {
+  background-color: #f9fcfd;
+}
+
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table tr.selected {
+  background-color: #d6ecff;
+}
+
+/* Paginación */
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.swal2-popup[data-custom="tabla-inundaciones"] .pagination-btn {
+  background-color: #3a86ff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.swal2-popup[data-custom="tabla-inundaciones"] .pagination-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Botones inferiores */
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.swal2-popup[data-custom="tabla-inundaciones"] .swal2-confirm,
+.swal2-popup[data-custom="tabla-inundaciones"] .swal2-cancel {
+  font-size: 12px !important;
+  padding: 6px 12px !important;
+  min-width: 90px;
+  border-radius: 4px !important;
+}
+
+
+/* 🔷 Paginación */
+.data-table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.pagination-btn {
+  background-color: #3a86ff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.pagination-btn:hover {
+  background-color: #2a75ee;
+}
+
+.pagination-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+#pageInfo {
+  color: #555;
+}
+
+/* Extra: columnas más estrechas para Fecha y Departamento */
+.data-table td:nth-child(1),
+.data-table td:nth-child(4),
+.data-table th:nth-child(1),
+.data-table th:nth-child(4) {
+  width: 120px;
+}
+
+.data-table td:nth-child(2),
+.data-table th:nth-child(2) {
+  width: auto;
+}
