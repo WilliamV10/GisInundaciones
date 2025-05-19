@@ -121,7 +121,8 @@ function showInundacionesTableModal(tableData, originalFeatures) {
 
   // Mostrar el modal con la tabla (tamaño reducido)
   Swal.fire({
-    title: '<span style="font-size: 22px; color: #1f4e79; font-weight: bold;">📝 Registro Histórico de Inundaciones 2019</span>',
+    title: '<i class="fa fa-book" style="color:#3a86ff;"></i> <span style="font-size: 20px; color:#1e1e1e;">Registro <strong style="color:#3a86ff;">Histórico</strong> de Inundaciones <span style="font-weight:normal;">2019</span></span>',
+
     html: tableHtml,
     width: '50%', // Ligeramente más ancho para acomodar la nueva columna
     showConfirmButton: false,
