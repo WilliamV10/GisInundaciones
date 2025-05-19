@@ -622,7 +622,7 @@ html, body {
 .data-table th:nth-child(2) {
   width: auto;
 }
-@media (max-width: 480px) {
+@media (max-width: 390px) {
   .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(1),
   .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(1) {
     width: 90px !important;
