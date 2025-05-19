@@ -622,30 +622,195 @@ html, body {
 .data-table th:nth-child(2) {
   width: auto;
 }
-@media (max-width: 390px) {
+/* Ajustes responsivos para tablas en móviles */
+@media (max-width: 480px) {
+  /* Hacer el modal más compacto y ocupar más pantalla */
+  .swal2-popup[data-custom="tabla-inundaciones"] {
+    width: 95vw !important;
+    padding: 10px !important;
+    margin: 10px auto !important;
+    font-size: 11px !important;
+  }
+  
+  /* Título más pequeño */
+  .swal2-popup[data-custom="tabla-inundaciones"] .swal2-title {
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+    padding: 0 !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Espacio limitado para el cuerpo de la tabla */
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-container {
+    max-height: 40vh;
+    margin-top: 5px;
+  }
+  
+  /* Filtro más compacto */
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-filter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+  
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-filter label {
+    margin-bottom: 3px;
+    font-size: 11px;
+  }
+  
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-filter input {
+    width: 100%;
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+  
+  /* Ajustar tamaño de fuente en tabla */
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table {
+    font-size: 11px;
+  }
+  
+  /* Hacer las celdas más compactas */
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th,
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td {
+    padding: 5px 4px;
+  }
+  
+  /* Botones de acción más grandes para facilitar el toque */
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-actions {
+    margin-top: 8px;
+  }
+  
+  .swal2-popup[data-custom="tabla-inundaciones"] .swal2-styled {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    min-width: 80px;
+  }
+  
+  /* Mejorar la paginación */
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-pagination {
+    margin: 6px 0;
+  }
+  
+  .swal2-popup[data-custom="tabla-inundaciones"] .pagination-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+    min-width: 70px;
+  }
+  
+  /* Ajustar área táctil para selección de filas */
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table tbody tr {
+    height: 36px; /* Altura mínima para mejor toque */
+  }
+  
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table tr:active {
+    background-color: #d6ecff !important;
+  }
+}
+
+/* Ajustes para dispositivos ultra pequeños */
+@media (max-width: 360px) {
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th,
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td {
+    padding: 4px 3px;
+    font-size: 10px;
+  }
+  
   .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(1),
   .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(1) {
-    width: 90px !important;
+    width: 70px !important;
   }
+  
+  .swal2-popup[data-custom="tabla-inundaciones"] .pagination-btn {
+    padding: 5px 8px;
+    font-size: 11px;
+    min-width: 60px;
+  }
+  
+  .swal2-popup[data-custom="tabla-inundaciones"] #pageInfo {
+    font-size: 10px;
+  }
+}
 
+/* Ajustes para orientación landscape */
+@media (max-height: 480px) and (orientation: landscape) {
+  .swal2-popup[data-custom="tabla-inundaciones"] {
+    width: 85vw !important;
+  }
+  
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-container {
+    max-height: 35vh;
+  }
+  
+  /* Distribuir mejor el espacio horizontal */
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(1),
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(1) {
+    width: 15% !important;
+  }
+  
   .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(2),
   .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(2) {
-    width: 110px !important;
+    width: 35% !important;
   }
-
+  
   .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(3),
-  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(3) {
-    width: 100px !important;
-  }
-
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(3),
   .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(4),
   .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(4) {
-    width: 100px !important;
+    width: 25% !important;
   }
+  
+  /* Ordenar elementos para landscape */
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-filter {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-filter label {
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+}
 
-  /* Forzar texto horizontal legible */
-  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td {
-    white-space: normal !important;
-    word-break: break-word !important;
-  }
+/* Mejoras táctiles para selección de filas */
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table tr {
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+}
+
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table tr:hover {
+  background-color: #f0f7ff;
+}
+
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table tr.selected {
+  background-color: #d6ecff;
+  position: relative;
+}
+
+/* Indicador visual de selección */
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table tr.selected::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: #3a86ff;
+}
+
+/* Mejoras a la accesibilidad de los botones */
+.swal2-popup[data-custom="tabla-inundaciones"] .pagination-btn:focus,
+.swal2-popup[data-custom="tabla-inundaciones"] .swal2-styled:focus {
+  outline: 2px solid #3a86ff;
+  outline-offset: 2px;
+}
+
+/* Mejoras de contraste */
+.swal2-popup[data-custom="tabla-inundaciones"] .data-table th {
+  background-color: #3a86ff;
+  color: white;
+}
+
+.swal2-popup[data-custom="tabla-inundaciones"] #pageInfo {
+  font-weight: 600;
 }
