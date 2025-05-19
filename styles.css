@@ -623,29 +623,49 @@ html, body {
   width: auto;
 }
 @media (min-width: 390px) and (max-width: 480px) {
-  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(1),
-  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(1) {
-    width: 90px !important;
+  .swal2-popup[data-custom="tabla-inundaciones"] {
+    width: 95vw !important;
+    padding: 10px 12px !important;
+    font-size: 11px !important;
   }
 
-  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(2),
-  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(2) {
-    width: 110px !important;
-  }
-
-  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(3),
-  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(3) {
-    width: 100px !important;
-  }
-
-  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(4),
-  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(4) {
-    width: 100px !important;
-  }
-
-  /* Forzar texto horizontal legible */
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th,
   .swal2-popup[data-custom="tabla-inundaciones"] .data-table td {
-    white-space: normal !important;
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+  }
+
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(1),
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(1),
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(4),
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(4) {
+    width: 100px;
+  }
+
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td:nth-child(2),
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table th:nth-child(2) {
+    width: 120px;
+  }
+
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table td {
     word-break: break-word !important;
+    white-space: normal !important;
+  }
+
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-container {
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  .swal2-popup[data-custom="tabla-inundaciones"] .data-table-actions {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .swal2-popup[data-custom="tabla-inundaciones"] .swal2-confirm,
+  .swal2-popup[data-custom="tabla-inundaciones"] .swal2-cancel {
+    width: 100%;
   }
 }
+
