@@ -669,3 +669,55 @@ html, body {
   }
 }
 
+    /* Añadir estos estilos al archivo styles.css */
+  
+  /* Estilos para la sección de controles 3D */
+  .controls-3d-section {
+    border-top: 1px solid rgba(200, 200, 200, 0.3);
+    margin-top: 15px;
+    padding-top: 5px;
+  }
+  
+  .controls-3d {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .toggle-3d-button {
+    background-color: #4361ee;
+    color: white;
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .layer-3d-button {
+    padding: 6px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f8f9fa;
+    margin-top: 2px;
+  }
+  
+  .layer-3d-button:hover {
+    background-color: #e9ecef;
+  }
+  
+  .layer-3d-button.active {
+    background-color: #4361ee;
+    color: white;
+  }

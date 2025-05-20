@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
+<head>  <meta charset="utf-8" />
   <title>GIS Zonas Propensas a Inundaciones en El Salvador </title>
   <link rel="icon" type="image/x-icon" href="gis.ico">
-  <script src="https://cesium.com/downloads/cesiumjs/releases/1.113/Build/Cesium/Cesium.js"></script>
-  <link href="https://cesium.com/downloads/cesiumjs/releases/1.113/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
+  <!-- Bajamos a una versión estable de Cesium (1.104) que tiene menos problemas con el renderizado 3D -->
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -93,5 +93,6 @@
   <script src="interface.js"></script>
   <script src="navigation.js"></script>
   <script src="datatable.js"></script>
+  <script src="3d-controls.js"></script>
 </body>
 </html>

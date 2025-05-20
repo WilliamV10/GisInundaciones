@@ -4,6 +4,7 @@
  * @param {Object} additionalParams - Parámetros adicionales
  * @returns {Cesium.WebMapServiceImageryProvider} - Proveedor de imágenes
  */
+// Modificar la función createWMSProvider para habilitar el drapeado en terreno
 function createWMSProvider(layer, additionalParams = {}) {
   // Solo para humedad usar texto plano, el resto JSON
   const isHumedadLayer = layer === CONFIG.LAYERS.HUMEDAD;
@@ -11,7 +12,7 @@ function createWMSProvider(layer, additionalParams = {}) {
     { info_format: 'text/plain' } : 
     { info_format: 'application/json' };
   
-  return new Cesium.WebMapServiceImageryProvider({
+  const provider = new Cesium.WebMapServiceImageryProvider({
     url: CONFIG.GEOSERVER_URL,
     layers: layer,
     parameters: { 
@@ -23,7 +24,18 @@ function createWMSProvider(layer, additionalParams = {}) {
     },
     tilingScheme: new Cesium.GeographicTilingScheme()
   });
+  
+  return provider;
 }
+
+// Asegurar que el terreno está activado
+viewer.terrainProvider = Cesium.createWorldTerrain({
+  requestWaterMask: true,
+  requestVertexNormals: true
+});
+
+// Configurar el globo para habilitar la verdadera representación 3D
+viewer.scene.globe.depthTestAgainstTerrain = true;
 // Inicialización de capas
 const layers = {
   elevacion: viewer.imageryLayers.addImageryProvider(createWMSProvider(CONFIG.LAYERS.ELEVACION)),

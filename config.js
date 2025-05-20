@@ -30,3 +30,4 @@ viewer.camera.setView({
 });
 
 viewer.scene.screenSpaceCameraController.enableInputs = true;
+
